@@ -11,7 +11,4 @@ urlpatterns = [
     path('services/', include('apps.services.urls', namespace='services')),
 ]
 
-
-
-
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

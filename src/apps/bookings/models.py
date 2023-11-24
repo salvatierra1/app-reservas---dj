@@ -2,7 +2,7 @@ from django.db import models
 
 from apps.customers.models import Customers
 from apps.services.models import Services
-from apps.employes.models import Employes
+from apps.employees.models import Employees
 from apps.coordinators.models import Coordinators
 
 
@@ -13,5 +13,5 @@ class Bookings(models.Model):
     date = models.DateTimeField()
     customer = models.ForeignKey(Customers, on_delete=models.CASCADE)
     service = models.ForeignKey(Services, on_delete=models.CASCADE)
-    employe = models.ForeignKey(Employes, on_delete=models.CASCADE)
+    employee = models.ForeignKey(Employees, on_delete=models.CASCADE)
     coordinators = models.ForeignKey(Coordinators, on_delete=models.CASCADE)
