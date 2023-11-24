@@ -6,7 +6,23 @@
 # appEvents
 
 1. Clone project
-```http:```
+```https://github.com/javierCh77/appEvents```
+2. Create environment variable
+```
+python -m venv venv
+```
+3. Run virtual environment
+```
+venv\Scripts\activate
+```
+4. Create migration
+```
+python manage.py migrate
+```
+5. Runing server 
+```
+python manage.py runserver
+```
 
 
 
