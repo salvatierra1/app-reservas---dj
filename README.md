@@ -7,19 +7,28 @@
 
 1. Clone project
 ```https://github.com/javierCh77/appEvents```
+
+
 2. Create environment variable
 ```
 python -m venv venv
 ```
+
+
 3. Run virtual environment
 ```
 venv\Scripts\activate
 ```
-4. Create migration
+
+4. Install Django in folder ```src/```
+```
+pip install Django
+```
+5. Create migration
 ```
 python manage.py migrate
 ```
-5. Runing server 
+6. Runing server 
 ```
 python manage.py runserver
 ```
