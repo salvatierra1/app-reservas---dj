@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from .models import Employes
+from .models import Employees
 from django.views import generic
 
 # Create your views here.
 
-class EmployesCreateView(generic.CreateView):
-    model= Employes
+class EmployeesCreateView(generic.CreateView):
+    model= Employees
     fields= '__all__'
-    template_name = 'employes/create.html'
+    template_name = 'employees/create.html'

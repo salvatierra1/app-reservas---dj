@@ -11,7 +11,7 @@ urlpatterns = [
     path('bookings/', include('apps.bookings.urls', namespace='bookings')),
     path('coordinators/', include('apps.coordinators.urls', namespace='coorinators')),
     path('customers/', include('apps.customers.urls', namespace='customers')),
-    path('employes/', include('apps.employes.urls', namespace='employes')),
+    path('employees/', include('apps.employees.urls', namespace='employees')),
     path('services/', include('apps.services.urls', namespace='services')),
 ]
 
