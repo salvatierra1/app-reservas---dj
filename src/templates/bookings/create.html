@@ -1,23 +1,12 @@
 {% extends "home/base.html" %}
 
 
-{% block titulo %}
-{{titulo}}
-{% endblock titulo %}
+{% block content %}
+<div class='text-primary'>CREAR RESERVAS</div>
 
-
-
-{% block contenido %}
-
-<form action="" method="POST" enctype="multipart/form-data">
-    {{ form.as_p }}
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    
-    <a class="btn btn-warning" role="button">Volver</a>
+    {{ form.as_table }}
     <input class="btn btn-success" type="submit">
 </form>
-
-
-
-
-{% endblock contenido %}
+{% endblock content %}
