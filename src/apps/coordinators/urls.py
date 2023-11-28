@@ -5,6 +5,7 @@ app_name = 'apps.coordinators'
 
 
 urlpatterns = [
-
-     path('create/', views.CoordinatorsCreateView.as_view(), name ='create'),
+     path('new/', views.CoordinatorsCreateView.as_view(), name ='new'),
+     path('update/<int:id>/', views.CoordinatorsUpdateView.as_view(), name ='update'), 
+     path('list/', views.CoordinatorsListView.as_view(), name ='list'),
 ]
