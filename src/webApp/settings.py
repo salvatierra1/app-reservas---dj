@@ -58,30 +58,30 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'webApp.urls'
 
 TEMPLATES = [
-    {
-        'BACKEND': 'django_jinja.backend.Jinja2',
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'match_extension': '.html',
-            'newstyle_gettext': True,
-            'extensions': [
-                'jinja2.ext.with_',
-                'jinja2.ext.do',
-                'jinja2.ext.loopcontrols',
-                'jinja2.ext.i18n',
-                'django_jinja.builtins.extensions.CsrfExtension',
-                'django_jinja.builtins.extensions.CacheExtension',
-                'django_jinja.builtins.extensions.TimezoneExtension',
-                'django_jinja.builtins.extensions.UrlsExtension',
-            ],
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
+    # {
+    #     'BACKEND': 'django_jinja.backend.Jinja2',
+    #     'APP_DIRS': True,
+    #     'OPTIONS': {
+    #         'match_extension': '.html',
+    #         'newstyle_gettext': True,
+    #         'extensions': [
+    #             'jinja2.ext.with_',
+    #             'jinja2.ext.do',
+    #             'jinja2.ext.loopcontrols',
+    #             'jinja2.ext.i18n',
+    #             'django_jinja.builtins.extensions.CsrfExtension',
+    #             'django_jinja.builtins.extensions.CacheExtension',
+    #             'django_jinja.builtins.extensions.TimezoneExtension',
+    #             'django_jinja.builtins.extensions.UrlsExtension',
+    #         ],
+    #         'context_processors': [
+    #             'django.template.context_processors.debug',
+    #             'django.template.context_processors.request',
+    #             'django.contrib.auth.context_processors.auth',
+    #             'django.contrib.messages.context_processors.messages',
+    #         ],
+    #     },
+    # },
     {
         
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
