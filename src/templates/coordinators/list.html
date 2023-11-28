@@ -1,0 +1,25 @@
+{% extends "home/base.html" %}
+{% block content %}
+    <h3>Listado de coordinadores</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Apellido/s</th>
+                <th scope="col">Nombre/s</th>
+                <th scope="col">DNI</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for coordinator in coordinators %}
+                <tr>
+                    <td>{{ coordinator.id }}</td>
+                    <td>{{ coordinator.last_name }}</td>
+                    <td>{{ coordinator.name }}</td>
+                    <td>{{ coordinator.dni }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
+
