@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from apps.customers.models import Customers
 from apps.services.models import Services
 from apps.employees.models import Employees
@@ -15,3 +16,8 @@ class Bookings(models.Model):
     employee = models.ForeignKey(Employees, on_delete=models.CASCADE)
     coordinators = models.ForeignKey(Coordinators, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return F"{self.date} | {self.customer} "
+        
+    def get_absolute_url(self):
+        return reverse("bookings:detalle", kwargs={"pk": self.id})    

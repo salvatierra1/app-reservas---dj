@@ -1,26 +1,5 @@
 {% extends "home/base.html" %}
 {% block content %}
-    <h3>Listado de reservas</h3>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Apellido/s</th>
-                <th scope="col">Nombre/s</th>
-                <th scope="col">DNI</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for coordinator in coordinators %}
-                <tr>
-                    <td>{{ booking.id }}</td>
-                    <td>{{ booking.date }}</td>
-                    <td>{{ booking.coordinators_id }}</td>
-                    <td>{{ booking.customer_id }}</td>
-                    <td>{{ booking.employee_id }}</td>
-                    <td>{{ booking.service_id }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% endblock content %}
+<div class='text-primary'>LISTAR RESERVAS RESERVAS</div>
+
+<div> aqui crear la tabla para listar la reserva</div>
