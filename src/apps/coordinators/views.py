@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import Coordinators
-from django.views import generic
+from django.views import View, generic
 from django.urls import reverse_lazy
+
 # Create your views here.
 
 
@@ -23,4 +24,14 @@ class CoordinatorsListView(generic.ListView):
     model= Coordinators
     template_name = 'coordinators/list.html'
     context_object_name = 'coordinators'
+    
+class CoordinatorsActivateView(View):
+    success_url = reverse_lazy('apps.coordinators:list')
+
+    def post(self, request, pk, *args, **kwargs):
+        coordinator = get_object_or_404(Coordinators, pk=pk)
+        coordinator.state = True
+        coordinator.save()
+        return redirect(self.success_url)
+
     
