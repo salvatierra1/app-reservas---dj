@@ -9,7 +9,7 @@ from apps.coordinators.models import Coordinators
 
 
 class Bookings(models.Model):
-   # booking_date = models.DateTimeField(auto_now_add=True)
+    booking_date = models.DateTimeField(auto_now_add=True, blank=True)
     date = models.DateTimeField()
     customer = models.ForeignKey(Customers, on_delete=models.CASCADE)
     service = models.ForeignKey(Services, on_delete=models.CASCADE)

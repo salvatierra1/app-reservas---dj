@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from .models import Employees
-from django.views import generic
+from django.views import View, generic
 
 # Create your views here.
 

@@ -27,11 +27,18 @@ class CoordinatorsListView(generic.ListView):
     
 class CoordinatorsActivateView(View):
     success_url = reverse_lazy('apps.coordinators:list')
-
+    
     def post(self, request, pk, *args, **kwargs):
         coordinator = get_object_or_404(Coordinators, pk=pk)
         coordinator.state = True
         coordinator.save()
         return redirect(self.success_url)
 
+class CoordinatorsDisabledView(View):
+    success_url = reverse_lazy('apps.coordinators:list')
     
+    def post(self, request, pk, *args, **kwargs):
+        coordinator = get_object_or_404(Coordinators, pk=pk)
+        coordinator.state = False
+        coordinator.save()
+        return redirect(self.success_url)

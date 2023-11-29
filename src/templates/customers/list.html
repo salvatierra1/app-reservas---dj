@@ -1,0 +1,24 @@
+{% extends "home/base.html" %}
+{% block content %}
+    <h3>Listado de Clientes</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Apellido/s</th>
+                <th scope="col">Nombre/s</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.id }}</td>
+                    <td>{{ customer.last_name }}</td>
+                    <td>{{ customer.name }}</td>
+                    <td>{{employee.state}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

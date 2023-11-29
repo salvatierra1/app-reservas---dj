@@ -1,5 +1,28 @@
 {% extends "home/base.html" %}
 {% block content %}
-<div class='text-primary'>LISTAR RESERVAS RESERVAS</div>
-
-<div> aqui crear la tabla para listar la reserva</div>
+    <h3>Listado de reservas</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Fecha reserva</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Servicio</th>
+                <th scope="col">Coordinador</th>
+                <th scope="col">Empleado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.id }}</td>
+                    <td>{{ booking.date }}</td>
+                    <td>{{ booking.customer }}</td>
+                    <td>{{ booking.service }}</td>
+                    <td>{{ booking.coordinators }}</td>
+                    <td>{{ booking.employee }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

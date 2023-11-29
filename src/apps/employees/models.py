@@ -7,3 +7,6 @@ class Employees(models.Model):
     last_name = models.CharField(max_length=100)
     number_file = models.IntegerField()
     state = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return F"{self.last_name}, {self.name}"

@@ -7,3 +7,5 @@ class Customers(models.Model):
     last_name = models.CharField(max_length=100)
     state = models.BooleanField(default=True)
 
+    def __str__(self):
+        return F"{self.last_name}, {self.name}"

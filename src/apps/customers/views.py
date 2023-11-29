@@ -31,3 +31,12 @@ class CustomersActivateView(View):
         customers.state = True
         customers.save()
         return redirect(self.success_url)
+
+class CustomersDisabledView(View):
+    success_url = reverse_lazy('apps.customers:list')
+    
+    def post(self, request, pk, *args, **kwargs):
+        customers = get_object_or_404(Customers, pk=pk)
+        customers.state = False
+        customers.save()
+        return redirect(self.success_url)

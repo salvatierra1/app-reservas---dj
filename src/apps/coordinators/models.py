@@ -9,3 +9,6 @@ class Coordinators(models.Model):
     dni = models.IntegerField()
     registration_date = models.DateTimeField(auto_now_add=True)
     state = models.BooleanField(default=True)
+
+    def __str__(self):
+        return F"{self.last_name}, {self.name}"

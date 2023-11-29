@@ -1,9 +1,7 @@
 {% extends "home/base.html" %}
 
-
 {% block content %}
-<div class='text-primary'>CREAR EMPLEADOS</div>
-
+<div class='text-primary'>Crear empleados</div>
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_table }}
