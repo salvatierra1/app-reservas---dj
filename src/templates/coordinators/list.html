@@ -8,6 +8,7 @@
                 <th scope="col">Apellido/s</th>
                 <th scope="col">Nombre/s</th>
                 <th scope="col">DNI</th>
+                <th scope="col">Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +18,12 @@
                     <td>{{ coordinator.last_name }}</td>
                     <td>{{ coordinator.name }}</td>
                     <td>{{ coordinator.dni }}</td>
+                    <td>
+                        <form method="post" action="{% url 'apps.coordinators:activate' pk=coordinator.pk %}">
+                            {% csrf_token %}
+                            <button type="submit">Activar</button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

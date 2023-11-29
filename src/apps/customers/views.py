@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from .models import Customers
-from django.views import generic
+from django.views import View, generic
 
 # Create your views here.
 class CustomersCreateView(generic.CreateView):
@@ -23,4 +23,11 @@ class CustomersListView(generic.ListView):
     template_name = 'customers/list.html'
     context_object_name = 'customers'
     
-    
+class CustomersActivateView(View):
+    success_url = reverse_lazy('apps.customers:list')
+
+    def post(self, request, pk, *args, **kwargs):
+        customers = get_object_or_404(customers, pk=pk)
+        customers.state = True
+        customers.save()
+        return redirect(self.success_url)

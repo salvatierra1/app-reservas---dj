@@ -10,7 +10,7 @@ class BookingsCreateView(generic.CreateView):
     model= Bookings
     fields= '__all__'
     template_name = 'bookings/create.html'
-    success_message = "¡La reserva '%(name)s' fue creado correctamente!"
+    success_message = "¡La reserva '%(name)s' fue creada correctamente!"
     success_url = reverse_lazy('apps.bookings:list') 
      
      
@@ -30,7 +30,7 @@ class BookingsUpdateView(generic.UpdateView):
     model = Bookings
     fields= '__all__'
     template_name = 'bookings/update.html'
-    success_message = "¡La reserva '%(name)s' fue actualizado correctamente!"
+    success_message = "¡La reserva '%(name)s' fue actualizada correctamente!"
     success_url = reverse_lazy('apps.bookings:list')   
     
 

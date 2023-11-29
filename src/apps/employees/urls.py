@@ -5,6 +5,6 @@ app_name = 'apps.employees'
 
 urlpatterns = [
      path('new/', views.EmployeesCreateView.as_view(), name ='new'),
-     path('update/<int:id>/', views.EmployeesUpdateView.as_view(), name ='update'),
+     path('update/<int:pk>/', views.EmployeesUpdateView.as_view(), name ='update'),
      path('list/', views.EmployeesListView.as_view(), name ='list'),
 ]
