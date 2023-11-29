@@ -11,11 +11,38 @@
 <body>
 
     <div> 
-        pagina base
+      <nav class="navbar navbar-expand-lg bg-dark ">
+        <div class="container-fluid justify-content-center">
+          <ul class="nav gap-4">
+            <li class="nav-item">
+              <a class="navbar-brand text-light "  href="#">Inicio</a>
+            </li>
+            <li class="nav-item ">
+              <a class="navbar-brand text-light "  href="#">Reservas</a>
+            </li>
+            <li class="nav-item">
+              <a class="navbar-brand text-light"  href="#">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="navbar-brand text-light"  href="#">Empleados</a>
+            </li>
+            <li class="nav-item">
+              <a class="navbar-brand text-light"  href="#">Clientes</a>
+            </li>
+            <li class="nav-item">
+              <a class="navbar-brand text-light" href="#" >Coordinadores</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
+    
+    <div class='container mt-4 bg-info'>
     {% block content %}
+      
+    
     {% endblock %}
- 
+    </div>
  
  
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
