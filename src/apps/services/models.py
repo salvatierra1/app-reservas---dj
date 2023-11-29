@@ -7,3 +7,6 @@ class Services(models.Model):
     description = models.TextField(max_length=300)
     price = models.FloatField()
     state = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return F"{self.name}"
