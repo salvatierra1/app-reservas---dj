@@ -18,17 +18,18 @@ def test_creacion_customer(client):
     assert Customers.objects.filter(name='Victor', last_name='Salvatierra', state=True).exists()
 
 @pytest.mark.django_db 
-def test_update_customer():
-    customer = Customers.objects.create(name='Victor', last_name='Salvatierra', state=True)
-    customer_update = Customers.objects.get(id=customer.id)
-    customer_update.name = 'Javier'
-    customer_update.last_name = 'Chavarria'
-    customer_update.state = False
-    customer_update.save()
-    customer_updated = Customers.objects.get(id=customer.id)
-    assert customer_updated.name == 'Javier'
-    assert customer_updated.last_name == 'Chavarria'
-    assert customer_updated.state == False
+def test_update_customer(client):
+    customer = Customers.objects.create(name='Antonio', last_name='Gomez', state=True)
+    url = reverse('apps.customers:update', kwargs={'pk': customer.pk})
+    response = client.get(url)
+    assert response.status_code == 200
+    response = client.post(url, {'name': 'Fernando', 'last_name': 'Lopez', 'state': False})
+    assert response.status_code == 302
+    assert response.url == reverse('apps.customers:list')
+    customer.refresh_from_db()
+    assert customer.name == 'Fernando'
+    assert customer.last_name == 'Lopez'
+    assert customer.state == False
     
 @pytest.mark.django_db
 def test_list_customer(client):
