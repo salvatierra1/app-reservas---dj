@@ -4,7 +4,6 @@ from .models import Customers
 from django.views import View, generic
 from django.contrib import messages
 
-
 # Create your views here.
 class CustomersCreateView(generic.CreateView):
     model= Customers
