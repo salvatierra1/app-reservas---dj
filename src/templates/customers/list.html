@@ -1,20 +1,16 @@
 {% extends "home/base.html" %}
 {% load static %}
 {% block content %}
-
 {% include 'include/messages.html' %}
-
 <div class='container'>
     <h2>Listado de Clientes</h2>
 </div>
 <hr/>
-
 <div class="add-button">
     <a href="{% url 'apps.customers:new' %}" class="btn btn-primary" >
     <i class="fas fa-plus-circle"></i> Agregar
     </a> 
 </div>
-
 <table class="table table-hover table-bordered mt-4 text-center">
         <thead>
             <tr class='table-dark'>
@@ -56,5 +52,5 @@
                 </tr>
             {% endfor %}
         </tbody>
-    </table>
+</table>
 {% endblock content %}

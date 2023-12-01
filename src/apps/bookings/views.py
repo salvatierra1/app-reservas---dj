@@ -1,4 +1,10 @@
+from django import forms
 from django.shortcuts import render
+from apps.coordinators.models import Coordinators
+
+from apps.customers.models import Customers
+from apps.employees.models import Employees
+from apps.services.models import Services
 from .models import Bookings
 from django.views import generic
 from django.urls import reverse_lazy
@@ -9,7 +15,15 @@ class BookingsCreateView(generic.CreateView):
     fields= '__all__'
     template_name = 'bookings/create.html'
     success_message = "¡La reserva '%(name)s' fue creada correctamente!"
-    success_url = reverse_lazy('apps.bookings:list') 
+    success_url = reverse_lazy('apps.bookings:list')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['customers'] = Customers.objects.all()
+        context['services'] = Services.objects.all()
+        context['employees'] = Employees.objects.all()
+        context['coordinators'] = Coordinators.objects.all()
+        return context
        
 class BookingsUpdateView(generic.UpdateView):
     model = Bookings
