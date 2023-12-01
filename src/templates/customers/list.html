@@ -1,6 +1,8 @@
 {% extends "home/base.html" %}
+{% load static %}
 {% block content %}
 
+{% include 'include/messages.html' %}
 
 <div class='container'>
     <h2>Listado de Clientes</h2>
@@ -9,7 +11,7 @@
 
 <div class="add-button">
     <a href="{% url 'apps.customers:new' %}" class="btn btn-primary" >
-    <i class="fas fa-plus-circle"></i> Crear cliente
+    <i class="fas fa-plus-circle"></i> Agregar
     </a> 
 </div>
 
@@ -34,14 +36,14 @@
                             <form method="post" action="{% url 'apps.customers:disabled' pk=customer.pk %}">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-danger">
-                                    <i class="fas fa-times"></i>Desactivado
+                                    <i class="fas fa-times"></i> Desactivar
                                 </button>
                             </form>
                         {% else %}
                             <form method="post" action="{% url 'apps.customers:activate' pk=customer.pk %}">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-success">
-                                    <i class="fas fa-check"></i>Activado
+                                    <i class="fas fa-check"></i> Activar
                                 </button>
                             </form>
                         {% endif %}
@@ -49,7 +51,8 @@
                     </td>
                     <td>
                         <a href="{% url 'apps.customers:update' pk=customer.pk %}" class="btn btn-secondary">
-                            <i class="fas fa-edit"></i><img src='../../media/icon/edit.svg' alt=''><img/></a>
+                            <i class="fas fa-edit"></i>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

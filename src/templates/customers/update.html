@@ -1,14 +1,10 @@
 {% extends "home/base.html" %}
+
 {% block content %}
-
-
 <div class='container'>
     <h2>Actualizar Cliente</h2>
 </div>
 <hr/>
-
-
-
 <div class='container mt-4'>
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -16,10 +12,8 @@
         <hr/>
         
         <div class="col-12 mt-4 text-end ">
-            <a href="{% url 'apps.customers:list' %}" class="btn btn-secondary"><i class="fas fa-times"></i>Volver</a> 
-            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>Crear</button>
+            <a href="{% url 'apps.customers:list' %}" class="btn btn-secondary"><i class="fas fa-times"></i> Cancelar</a> 
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
        </div>
     </form>     
-    
-    
 {% endblock content %}

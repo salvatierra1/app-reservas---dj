@@ -2,14 +2,20 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from .models import Customers
 from django.views import View, generic
+from django.contrib import messages
+
 
 # Create your views here.
 class CustomersCreateView(generic.CreateView):
     model= Customers
     fields= '__all__'
     template_name = 'customers/create.html'
-    success_message = "¡El cliente '%(name)s' fue creado correctamente!"
     success_url = reverse_lazy('apps.customers:list')
+    
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, f"¡El cliente '{self.object.name}' fue creado correctamente!")
+        return response
 
 class CustomersUpdateView(generic.UpdateView):
     model= Customers
