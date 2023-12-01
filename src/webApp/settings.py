@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'apps.customers',
     'apps.coordinators',
     'apps.bookings',
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -158,3 +160,7 @@ MEDIA_ROOT= BASE_DIR/'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"

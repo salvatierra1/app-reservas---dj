@@ -1,0 +1,37 @@
+{% extends "home/base.html" %}
+{% block content %}
+
+<div class='container'>
+    <h2>Listado de Servicios</h2>
+</div>
+<hr/>
+
+<div class="add-button">
+    <a href="{% url 'apps.services:new' %}" class="btn btn-primary" >
+    <i class="fas fa-plus-circle"></i> Crear servicio
+    </a> 
+</div>
+
+<table class="table table-hover table-bordered mt-4 text-center">
+        <thead>
+            <tr class='table-dark'>
+                <th scope="col">#</th>
+                <th scope="col">Nombre/s</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for service in services %}
+            <tr class='table-secondary'>
+                    <td>{{ service.id }}</td>
+                    <td>{{ service.name }}</td>
+                    <td>{{ service.description }}</td>
+                    <td>{{ service.price }}</td>
+                    <td>{{ service.state }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
