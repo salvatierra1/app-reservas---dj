@@ -20,8 +20,12 @@ class CustomersUpdateView(generic.UpdateView):
     model= Customers
     fields= '__all__'
     template_name = 'customers/update.html'
-    success_message = "¡El cliente '%(name)s' fue actualizado correctamente!"
     success_url = reverse_lazy('apps.customers:list')
+    
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, f"¡El cliente '{self.object.name}' fue actualizado correctamente!")
+        return response
     
 class CustomersListView(generic.ListView):
     model= Customers
@@ -35,6 +39,7 @@ class CustomersActivateView(View):
         customer = get_object_or_404(Customers, pk=pk)
         customer.state = True
         customer.save()
+        messages.success(self.request, f"¡El cliente fue activado correctamente!")
         return redirect(self.success_url)
 
 class CustomersDisabledView(View):
@@ -44,5 +49,6 @@ class CustomersDisabledView(View):
         customer = get_object_or_404(Customers, pk=pk)
         customer.state = False
         customer.save()
+        messages.success(self.request, f"¡El cliente fue desactivado correctamente!")
         return redirect(self.success_url)
     
