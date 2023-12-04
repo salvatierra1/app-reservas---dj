@@ -18,6 +18,7 @@
                 <th scope="col">Descripcion</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +28,28 @@
                     <td>{{ service.name }}</td>
                     <td>{{ service.description }}</td>
                     <td>{{ service.price }}</td>
-                    <td>{{ service.state }}</td>
+                    <td>
+                        {% if service.state %}
+                            <form method="post" action="{% url 'apps.services:disabled' pk=service.pk %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fas fa-times"></i> Desactivar
+                                </button>
+                            </form>
+                        {% else %}
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-check"></i> Activar
+                                </button>
+                            </form>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-secondary">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
