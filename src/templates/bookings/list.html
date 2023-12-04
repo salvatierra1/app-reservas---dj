@@ -19,6 +19,7 @@
                 <th scope="col">Servicio</th>
                 <th scope="col">Coordinador</th>
                 <th scope="col">Empleado</th>
+                <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,10 @@
                     <td>{{ booking.service }}</td>
                     <td>{{ booking.coordinators }}</td>
                     <td>{{ booking.employee }}</td>
+                    <td>
+                        <a href="{% url 'apps.bookings:update' pk=booking.pk %}" class="btn btn-secondary">
+                            <i class="fas fa-edit"></i></a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
