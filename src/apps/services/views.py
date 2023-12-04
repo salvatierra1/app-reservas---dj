@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from .models import Services
-from django.views import generic
+from django.views import View, generic
 from django.contrib import messages
 
 # Create your views here.
@@ -20,4 +20,13 @@ class ServicesListView(generic.ListView):
     model= Services
     template_name = 'services/list.html'
     context_object_name = 'services'
+
+class ServicesDisabledView(View):
+    success_url = reverse_lazy('apps.services:list')
     
+    def post(self, request, pk, *args, **kwargs):
+        service = get_object_or_404(Services, pk=pk)
+        service.state = False
+        service.save()
+        messages.success(self.request, f"¡El servicio fue desactivado correctamente!")
+        return redirect(self.success_url)
