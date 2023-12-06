@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from django.shortcuts import render
 from apps.coordinators.models import Coordinators
 from apps.customers.models import Customers
@@ -24,8 +25,15 @@ class BookingsCreateView(generic.CreateView):
         return context
     
     def form_valid(self, form):
+        date = form.cleaned_data['date']
+        current_datetime = datetime.now(timezone.utc)
+        current_date = current_datetime.date()
+        input_date = date.date()
+        if input_date < current_date:
+            messages.error(self.request, "¡La fecha no puede ser menor a la actual!")
+            return self.form_invalid(form)
         response = super().form_valid(form)
-        messages.success(self.request, f"¡La reserva fue creada correctamente!")
+        messages.success(self.request, "¡La reserva fue creada correctamente!")
         return response
        
 class BookingsUpdateView(generic.UpdateView):
