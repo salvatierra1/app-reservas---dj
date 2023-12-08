@@ -1,19 +1,23 @@
 /*att general*/
 body{
-    background-color: #21232A;
+    background-color: #f4f8fa;
 }
 .container-block{
     margin-top: 5rem!important;
     color:aliceblue;
-    background-color: #4a9c7e; 
+    background-color: #6e98bf; 
 }
 
+.nav{
+    background-color: #5373a2;
+}
 
+.table td{
+    background-color: #d1e1ec;
+}
 
-
-
-
-
-
+.table-tr{
+    background-color: #5373a2;
+}
 /* TEMPLATE CREATE COORDINATORS*/
 

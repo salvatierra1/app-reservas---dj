@@ -4,21 +4,21 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        Reservas
-                        <a href="{% url 'apps.bookings:list' %}" style="text-decoration: none;">
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </h5>
-                    <p class="card-text">Total de reservas</p>
-                    <i class="fas fa-calendar-alt" style="position: relative;">
-                        <span class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em;">
-                            {{ total_bookings }}
-                            <span class="visually-hidden"></span>
-                        </span>                        
-                    </i>
-                </div>
+                <a href="{% url 'apps.bookings:list' %}" style="text-decoration: none;">
+                    <div class="card-body">
+                            <h5 class="card-title">
+                                Reservas
+                                    <i class="fas fa-chevron-right"></i>
+                            </h5>
+                            <p class="card-text">Total de reservas</p>
+                            <i class="fas fa-calendar-alt" style="position: relative;">
+                                <span class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em;">
+                                    {{ total_bookings }}
+                                    <span class="visually-hidden"></span>
+                                </span>                        
+                            </i>
+                    </div>
+                </a>
             </div>                      
         </div>
         <div class="col-md-4">
