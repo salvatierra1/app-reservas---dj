@@ -6,7 +6,7 @@
 </div>
 <hr/>
 <div class="add-button">
-    <a href="{% url 'apps.bookings:new' %}" class="btn btn-primary" >
+    <a href="{% url 'apps.bookings:new' %}" class="btn btn-primary btn-sm" >
     <i class="fas fa-plus-circle"></i> Agregar
     </a> 
 </div>  
@@ -32,8 +32,12 @@
                     <td>{{ booking.coordinators }}</td>
                     <td>{{ booking.employee }}</td>
                     <td>
-                        <a href="{% url 'apps.bookings:update' pk=booking.pk %}" class="btn btn-secondary">
-                            <i class="fas fa-edit"></i></a>
+                        <a href="{% url 'apps.bookings:update' pk=booking.pk %}" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="{% url 'apps.bookings:delete' pk=booking.pk %}" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

@@ -45,10 +45,11 @@ INSTALLED_APPS = [
     'apps.customers',
     'apps.coordinators',
     'apps.bookings',
+    'sweetify',
     
     #Apis
     "rest_framework",
-     "apps.api_events",
+    "apps.api_events",
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -159,12 +160,21 @@ STATICFILES_DIRS = [
 MEDIA_URL='media/'
 MEDIA_ROOT= BASE_DIR/'media'
 
+# MESSAGE_TAGS = {
+#         messages.DEBUG: 'alert-secondary',
+#         messages.INFO: 'alert-info',
+#         messages.SUCCESS: 'alert-success',
+#         messages.WARNING: 'alert-warning',
+#         messages.ERROR: 'alert-danger',
+#  }
+
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 MESSAGE_TAGS = {
         messages.DEBUG: 'alert-secondary',
         messages.INFO: 'alert-info',
-        messages.SUCCESS: 'alert-success',
-        messages.WARNING: 'alert-warning',
-        messages.ERROR: 'alert-danger',
+        messages.SUCCESS: 'success',
+        messages.WARNING: 'warning',
+        messages.ERROR: 'error',
  }
 
 # Default primary key field type

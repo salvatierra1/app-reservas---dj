@@ -27,10 +27,6 @@ class CoordinatorsUpdateView(generic.UpdateView):
     success_url = reverse_lazy('apps.coordinators:list')
     
     def form_valid(self, form):
-        dni = form.cleaned_data['dni']
-        if Coordinators.objects.filter(dni=dni).exists():
-            messages.error(self.request, f"Ya existe un coordinador con el número de dni '{dni}'.")
-            return self.form_invalid(form)
         response = super().form_valid(form)
         messages.success(self.request, f"¡El coordinador '{self.object.name}' fue actualizado correctamente!")
         return response

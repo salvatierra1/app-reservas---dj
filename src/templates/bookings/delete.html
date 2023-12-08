@@ -1,6 +1,16 @@
-{% extends "home/base.html" %}
-{% block content %}
-<div class='text-danger'>BORRAR RESERVAS</div>
+{% extends 'home/base.html' %}
 
-<div> aqui listar la table que necesito borrar</div>
-{% endblock content %}
+{% block content %}
+  <h1>Eliminar reserva</h1>
+  <p>¿Estás seguro de que deseas eliminar la reserva?</p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="col-12 mt-4 text-end">
+        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+        <a href="{% url 'apps.bookings:list' %}" class="btn btn-secondary btn-sm">
+            <i class="fas fa-times"></i> Cancelar
+        </a>
+    </div>
+  </form>
+{% endblock %}

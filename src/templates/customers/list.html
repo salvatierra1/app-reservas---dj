@@ -7,7 +7,7 @@
 </div>
 <hr/>
 <div class="add-button">
-    <a href="{% url 'apps.customers:new' %}" class="btn btn-primary" >
+    <a href="{% url 'apps.customers:new' %}" class="btn btn-primary btn-sm" >
     <i class="fas fa-plus-circle"></i> Agregar
     </a> 
 </div>
@@ -31,14 +31,14 @@
                         {% if customer.state %}
                             <form method="post" action="{% url 'apps.customers:disabled' pk=customer.pk %}">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-danger">
+                                <button type="submit" class="btn btn-danger btn-sm">
                                     <i class="fas fa-times"></i> Desactivar
                                 </button>
                             </form>
                         {% else %}
                             <form method="post" action="{% url 'apps.customers:activate' pk=customer.pk %}">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-success">
+                                <button type="submit" class="btn btn-success btn-sm">
                                     <i class="fas fa-check"></i> Activar
                                 </button>
                             </form>

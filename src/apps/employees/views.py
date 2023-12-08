@@ -27,10 +27,6 @@ class EmployeesUpdateView(generic.UpdateView):
     success_url = reverse_lazy('apps.employees:list')
     
     def form_valid(self, form):
-        number_file = form.cleaned_data['number_file']
-        if Employees.objects.filter(number_file=number_file).exists():
-            messages.error(self.request, f"Ya existe un empleado con el número de legajo '{number_file}'.")
-            return self.form_invalid(form)
         response = super().form_valid(form)
         messages.success(self.request, f"¡El empleado '{self.object.name}' fue actualizado correctamente!")
         return response

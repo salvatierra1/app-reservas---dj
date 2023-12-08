@@ -7,7 +7,7 @@
 </div>
 <hr/>
 <div class="add-button">
-    <a href="{% url 'apps.employees:new' %}" class="btn btn-primary" >
+    <a href="{% url 'apps.employees:new' %}" class="btn btn-primary btn-sm" >
     <i class="fas fa-plus-circle"></i> Agregar
     </a> 
 </div>
@@ -19,6 +19,7 @@
                 <th scope="col">Nombre/s</th>
                 <th scope="col">Numero de legajo</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -28,7 +29,18 @@
                     <td>{{ employee.last_name }}</td>
                     <td>{{ employee.name }}</td>
                     <td>{{employee.number_file}}</td>
-                    <td>{{employee.state}}</td>
+                    <td>
+                        {% if employee.state %}
+                            <i class="fas fa-times text-danger"></i>
+                        {% else %}
+                            <i class="fas fa-check text-success"></i> 
+                        {% endif %}
+                    </td>                                       
+                    <td>
+                        <a href="{% url 'apps.employees:update' pk=employee.pk %}" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
