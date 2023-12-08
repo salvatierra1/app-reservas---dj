@@ -13,10 +13,10 @@
                     </h5>
                     <p class="card-text">Total de reservas</p>
                     <i class="fas fa-calendar-alt" style="position: relative;">
-                        <span class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-danger">
+                        <span class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em;">
                             {{ total_bookings }}
                             <span class="visually-hidden"></span>
-                        </span>
+                        </span>                        
                     </i>
                 </div>
             </div>                      
@@ -24,36 +24,76 @@
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title">Clientes</h5>
+                    <h5 class="card-title">
+                        Clientes
+                        <a href="{% url 'apps.customers:list' %}" style="text-decoration: none;">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </h5>
                     <p class="card-text">Total de clientes</p>
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-user-alt" style="position: relative;">
+                        <span class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em;">
+                            {{ total_customers }}
+                            <span class="visually-hidden"></span>
+                        </span>                        
+                    </i>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title">Servicios</h5>
+                    <h5 class="card-title">
+                        Servicios
+                        <a href="{% url 'apps.services:list' %}" style="text-decoration: none;">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </h5>
                     <p class="card-text">Total de servicios</p>
-                    <i class="fas fa-wrench"></i>
+                    <i class="fas fa-wrench" style="position: relative;">
+                        <span class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em;">
+                            {{ total_services }}
+                            <span class="visually-hidden"></span>
+                        </span>                        
+                    </i>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title">Coordinadores</h5>
+                    <h5 class="card-title">
+                        Coordinadores
+                        <a href="{% url 'apps.coordinators:list' %}" style="text-decoration: none;">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </h5>
                     <p class="card-text">Total de coordinadores</p>
-                    <i class="fas fa-user-tie"></i>
+                    <i class="fas fa-user-tie" style="position: relative;">
+                        <span class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em;">
+                            {{ total_coordinators }}
+                            <span class="visually-hidden"></span>
+                        </span>                        
+                    </i>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title">Empleados</h5>
+                    <h5 class="card-title">
+                        Empleados
+                        <a href="{% url 'apps.employees:list' %}" style="text-decoration: none;">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </h5>
                     <p class="card-text">Total de empleados</p>
-                    <i class="fas fa-briefcase"></i>
+                    <i class="fas fa-briefcase" style="position: relative;">
+                        <span class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5em;">
+                            {{ total_employees }}
+                            <span class="visually-hidden"></span>
+                        </span>                        
+                    </i>
                 </div>
             </div>
         </div>
