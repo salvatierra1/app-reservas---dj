@@ -1,0 +1,61 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Reservas
+                        <a href="{% url 'apps.bookings:list' %}" style="text-decoration: none;">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </h5>
+                    <p class="card-text">Total de reservas</p>
+                    <i class="fas fa-calendar-alt" style="position: relative;">
+                        <span class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-danger">
+                            {{ total_bookings }}
+                            <span class="visually-hidden"></span>
+                        </span>
+                    </i>
+                </div>
+            </div>                      
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Clientes</h5>
+                    <p class="card-text">Total de clientes</p>
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Servicios</h5>
+                    <p class="card-text">Total de servicios</p>
+                    <i class="fas fa-wrench"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Coordinadores</h5>
+                    <p class="card-text">Total de coordinadores</p>
+                    <i class="fas fa-user-tie"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Empleados</h5>
+                    <p class="card-text">Total de empleados</p>
+                    <i class="fas fa-briefcase"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
