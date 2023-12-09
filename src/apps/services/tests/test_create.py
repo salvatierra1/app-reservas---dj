@@ -16,3 +16,5 @@ def test_create_services(client):
     assert response.status_code == 302
     assert response.url == reverse('apps.services:list')
     assert Services.objects.filter(name = 'Salon de 15 años', description ='Juegos, iluminación', price = 130, state = True).exists()
+    
+      
