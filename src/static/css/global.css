@@ -1,23 +1,30 @@
-/*att general*/
-body{
+/* Estilos Generales */
+body {
     background-color: #f4f8fa;
-}
-.container-block{
-    margin-top: 5rem!important;
-    color:aliceblue;
-    background-color: #6e98bf; 
+    font-family: 'Roboto', sans-serif;
 }
 
-.nav{
+.container-block {
+    margin-top: 5rem !important;
+    color: aliceblue;
+    background-color: #6e98bf;
+}
+
+.nav {
     background-color: #5373a2;
 }
 
-.table td{
-    background-color: #d1e1ec;
+.container-block {
+    background-color: #44566c;
 }
 
-.table-tr{
-    background-color: #5373a2;
+.nav {
+    background-color: #2a3547;
 }
-/* TEMPLATE CREATE COORDINATORS*/
+
+body,
+.container-block,
+.table td {
+    color: #17202a;
+}
 
