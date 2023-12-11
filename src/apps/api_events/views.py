@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from apps.coordinators.models import Coordinators
 from apps.services.models import Services
 from apps.employees.models import Employees
+from apps.bookings.models import Bookings
 from .serializers import CoordinatorsListSerializer, CoordinatorsDetailSerializer, EmployeesDetailSerializer, EmployeesListSerializer, ServicesDetailSerializer, ServicesListSerializer
 
 # Create your views here.
@@ -42,4 +43,16 @@ class EmployeesListAPIView(generics.ListAPIView):
 class EmployeesRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Employees.objects.all()
     serializer_class = EmployeesDetailSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]  
+
+# Api Bookings
+
+class BookingsListAPIView(generics.ListAPIView):
+    queryset = Bookings.objects.all()
+    # serializer_class = BookingsListSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    
+class BookingsRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = Bookings.objects.all()
+    # serializer_class = BookingsDetailSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]  

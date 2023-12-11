@@ -2,6 +2,7 @@ from rest_framework import serializers
 from apps.coordinators.models import Coordinators
 from apps.employees.models import Employees
 from apps.services.models import Services
+from apps.customers.models import Customers
 
 class CoordinatorsListSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,4 +32,14 @@ class ServicesListSerializer(serializers.ModelSerializer):
 class ServicesDetailSerializer(serializers.ModelSerializer):       
     class Meta:
         model = Services
+        fields = '__all__'
+        
+class CustomersListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customers
+        fields = ['id', 'name']
+        
+class CustomersDetailSerializer(serializers.ModelSerializer):       
+    class Meta:
+        model = Customers
         fields = '__all__'

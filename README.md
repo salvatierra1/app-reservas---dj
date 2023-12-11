@@ -3,26 +3,35 @@
 </p>
 
 
-# appEvents
+# Resumen del Proyecto
 
-1. Clone project
-```https://github.com/javierCh77/appEvents```
+## App de Reserva para Eventos
 
+### Caso de Negocio
+
+**Situación Inicial 📋**
+
+Como parte de un equipo de desarrolladores en nuestra compañía, hemos recibido una solicitud del departamento de Ventas para desarrollar una aplicación base de reservas de servicios para eventos.
+
+**Objetivo 🎯**
+
+Desarrollar una aplicación web que permita registrar servicios, empleados y clientes, realizar reservas y visualizar listados. Se requiere un endpoint para consultar y filtrar servicios, mostrando detalles completos mediante un ID.
+
+## Instrucciones de Desarrollo
 
 2. Create environment variable
 ```
 python -m venv venv
 ```
 
-
 3. Run virtual environment
 ```
 venv\Scripts\activate
 ```
 
-4. Install Django in folder ```src/```
+4. Install requirements ```src/```
 ```
-pip install Django
+$ pip install -r requirements.txt
 ```
 5. Create migration
 ```
