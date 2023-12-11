@@ -19,6 +19,10 @@ Desarrollar una aplicación web que permita registrar servicios, empleados y cli
 
 ## Instrucciones de Desarrollo
 
+1. Clonar proyecto
+```
+git clone https://github.com/javierCh77/appEvents
+```
 2. Create environment variable
 ```
 python -m venv venv
