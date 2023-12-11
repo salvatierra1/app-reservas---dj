@@ -34,6 +34,13 @@
                 <a class="navbar-brand text-light"href="{% url 'apps.coordinators:list' %}">Coordinadores</a>
               </li>
             </ul>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a href={% url 'logout' %} class="nav-link" role="button">
+                    <i class="fas fa-sign-out-alt fa-lg"></i>
+                </a>
+              </li>    
+            </ul>
           </ul>
         </div>
       </nav>

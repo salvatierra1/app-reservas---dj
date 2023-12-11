@@ -3,9 +3,10 @@ from django.urls import reverse_lazy
 from .models import Employees
 from django.views import generic
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
-class EmployeesCreateView(generic.CreateView):
+class EmployeesCreateView(LoginRequiredMixin, generic.CreateView):
     model= Employees
     fields= '__all__'
     template_name = 'employees/create.html'
@@ -20,7 +21,7 @@ class EmployeesCreateView(generic.CreateView):
         messages.success(self.request, f"¡El empleado '{self.object.name}' fue creado correctamente!")
         return response
 
-class EmployeesUpdateView(generic.UpdateView):
+class EmployeesUpdateView(LoginRequiredMixin, generic.UpdateView):
     model= Employees
     fields= '__all__'
     template_name = 'employees/update.html'
@@ -31,7 +32,7 @@ class EmployeesUpdateView(generic.UpdateView):
         messages.success(self.request, f"¡El empleado '{self.object.name}' fue actualizado correctamente!")
         return response
     
-class EmployeesListView(generic.ListView):
+class EmployeesListView(LoginRequiredMixin, generic.ListView):
     model= Employees
     template_name = 'employees/list.html'
     context_object_name = 'employees'

@@ -3,9 +3,10 @@ from django.urls import reverse_lazy
 from .models import Services
 from django.views import View, generic
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
-class ServicesCreateView(generic.CreateView):
+class ServicesCreateView(LoginRequiredMixin, generic.CreateView):
     model= Services
     fields= '__all__'
     template_name = 'services/create.html'
@@ -16,7 +17,7 @@ class ServicesCreateView(generic.CreateView):
         messages.success(self.request, f"¡El servicio '{self.object.name}' fue creado correctamente!")
         return response
 
-class ServicesUpdateView(generic.UpdateView):
+class ServicesUpdateView(LoginRequiredMixin, generic.UpdateView):
     model= Services
     fields= '__all__'
     template_name = 'services/update.html'
@@ -27,12 +28,12 @@ class ServicesUpdateView(generic.UpdateView):
         messages.success(self.request, f"¡El servicio '{self.object.name}' fue actualizado correctamente!")
         return response
 
-class ServicesListView(generic.ListView):
+class ServicesListView(LoginRequiredMixin,generic.ListView):
     model= Services
     template_name = 'services/list.html'
     context_object_name = 'services'
 
-class ServicesActivateView(View):
+class ServicesActivateView(LoginRequiredMixin, View):
     success_url = reverse_lazy('apps.services:list')
 
     def post(self, request, pk, *args, **kwargs):
@@ -42,7 +43,7 @@ class ServicesActivateView(View):
         messages.success(self.request, f"¡El servicio fue activado correctamente!")
         return redirect(self.success_url)
 
-class ServicesDisabledView(View):
+class ServicesDisabledView(LoginRequiredMixin, View):
     success_url = reverse_lazy('apps.services:list')
     
     def post(self, request, pk, *args, **kwargs):

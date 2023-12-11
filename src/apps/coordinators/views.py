@@ -3,9 +3,10 @@ from .models import Coordinators
 from django.views import View, generic
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
-class CoordinatorsCreateView(generic.CreateView):
+class CoordinatorsCreateView(LoginRequiredMixin, generic.CreateView):
     model= Coordinators
     fields= '__all__'
     template_name = 'coordinators/create.html'
@@ -20,7 +21,7 @@ class CoordinatorsCreateView(generic.CreateView):
         messages.success(self.request, f"¡El coordinador '{self.object.name}' fue creado correctamente!")
         return response
     
-class CoordinatorsUpdateView(generic.UpdateView):
+class CoordinatorsUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Coordinators
     fields= '__all__'
     template_name = 'coordinators/update.html'
@@ -31,12 +32,12 @@ class CoordinatorsUpdateView(generic.UpdateView):
         messages.success(self.request, f"¡El coordinador '{self.object.name}' fue actualizado correctamente!")
         return response
     
-class CoordinatorsListView(generic.ListView):
+class CoordinatorsListView(LoginRequiredMixin, generic.ListView):
     model= Coordinators
     template_name = 'coordinators/list.html'
     context_object_name = 'coordinators'
     
-class CoordinatorsActivateView(View):
+class CoordinatorsActivateView(LoginRequiredMixin, View):
     success_url = reverse_lazy('apps.coordinators:list')
     
     def post(self, request, pk, *args, **kwargs):
@@ -46,7 +47,7 @@ class CoordinatorsActivateView(View):
         messages.success(self.request, f"¡El coordinador fue activado correctamente!")
         return redirect(self.success_url)
 
-class CoordinatorsDisabledView(View):
+class CoordinatorsDisabledView(LoginRequiredMixin, View):
     success_url = reverse_lazy('apps.coordinators:list')
     
     def post(self, request, pk, *args, **kwargs):

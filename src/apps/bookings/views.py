@@ -8,9 +8,10 @@ from .models import Bookings
 from django.views import generic
 from django.urls import reverse, reverse_lazy
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
-class BookingsCreateView(generic.CreateView):
+class BookingsCreateView(LoginRequiredMixin, generic.CreateView):
     model= Bookings
     fields= '__all__'
     template_name = 'bookings/create.html'
@@ -37,7 +38,7 @@ class BookingsCreateView(generic.CreateView):
         messages.success(self.request, "¡La reserva fue creada correctamente!")
         return response
        
-class BookingsUpdateView(generic.UpdateView):
+class BookingsUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Bookings
     fields= '__all__'
     template_name = 'bookings/update.html'
@@ -58,7 +59,7 @@ class BookingsUpdateView(generic.UpdateView):
         messages.success(self.request, f"¡La reserva fue actualizada correctamente!")
         return response 
 
-class BookingsDeleteView(generic.DeleteView):
+class BookingsDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Bookings
     template_name = 'bookings/delete.html'
     
@@ -66,7 +67,7 @@ class BookingsDeleteView(generic.DeleteView):
         messages.success(self.request, "¡La reserva fue eliminada correctamente!")
         return reverse("apps.bookings:list")
     
-class BookingsListView(generic.ListView):
+class BookingsListView(LoginRequiredMixin, generic.ListView):
     model= Bookings
     template_name = 'bookings/list.html'
     context_object_name = 'bookings'   

@@ -9,8 +9,9 @@ from apps.customers.models import Customers
 from apps.employees.models import Employees
 from apps.coordinators.models import Coordinators
 from apps.services.models import Services
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class IndexView(TemplateView):
+class IndexView(LoginRequiredMixin, TemplateView):
     template_name = 'home/index.html' 
     
     def get_context_data(self, **kwargs):
