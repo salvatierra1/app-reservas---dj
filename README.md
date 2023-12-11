@@ -19,7 +19,7 @@ Desarrollar una aplicación web que permita registrar servicios, empleados y cli
 
 ## Instrucciones de Desarrollo
 
-1. Clonar proyecto
+1. Clone project
 ```
 git clone https://github.com/javierCh77/appEvents
 ```
@@ -46,5 +46,5 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-
+¡Gracias por contribuir al desarrollo de la aplicación de reserva para eventos! 🚀🎉
 
