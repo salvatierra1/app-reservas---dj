@@ -15,9 +15,10 @@ class Bookings(models.Model):
     service = models.ForeignKey(Services, on_delete=models.CASCADE)
     employee = models.ForeignKey(Employees, on_delete=models.CASCADE)
     coordinators = models.ForeignKey(Coordinators, on_delete=models.CASCADE)
+    
 
     def __str__(self):
         return F"{self.date} | {self.customer} "
         
     def get_absolute_url(self):
-        return reverse("bookings:detalle", kwargs={"pk": self.id})    
+        return reverse("bookings:detalle", kwargs={"pk": self.id}) 

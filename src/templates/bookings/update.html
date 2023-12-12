@@ -18,16 +18,6 @@
                     </div>
                 </div>
                 <div class="form-group mb-3">
-                    <label>Empleado:</label>
-                    <select name="employee" class="form-control">
-                        {% for employee in employees %}
-                            <option value="{{ employee.id }}" {% if employee.id == bookings.employee.id %}selected{% endif %}>
-                                {{ employee.last_name }}, {{ employee.name }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="form-group mb-3">
                     <label>Service:</label>
                     <select name="service" class="form-control">
                         {% for service in services %}

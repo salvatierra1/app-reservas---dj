@@ -13,8 +13,6 @@
 <body>
 
 {% block content %}
-
-
 <div class='container-login '>
 <div class='row  justify-content-between'>
     <div class='col-12 col-md-6 '>
@@ -23,7 +21,7 @@
    
     <div class='container col-8  col-md-6 p-4 rounded container-form'>
     
-        <form method="POST" action="{% url 'login' %} " enctype="multipart/form-data" >
+        <form method="post" action="{% url 'login' %} " enctype="multipart/form-data" >
             {% csrf_token %}
                 <div class="row">
                     <div class="container col-md-12">
@@ -31,22 +29,18 @@
                         <div class="form-group mb-3 mt-4">
                             <label>Usuario</label>
                         <div id="date_input">
-                            <input type="text" name="user.name" class="form-control"/>
+                            <input type="text" name="username" class="form-control"/>
                         </div>
                     </div>
                     <div class="form-group mb-3">
                         <label>Contraseña</label>
-                    <div id="date_input" >
+                    <div id="date_input">
                         <input type="password" name="password" class="form-control"/>
                     </div>
                 </div>
-                <button type="submit" class='form-control btn btn-outline-light mt-4' >Ingresar</button>
+                <button type="submit" class='form-control btn btn-outline-light mt-4'>Ingresar</button>
         </form>
     </div>
 </div>
 </div>
 {% endblock %}
-
-<script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
-</body>
-</html>

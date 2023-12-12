@@ -4,6 +4,9 @@ from .models import Employees
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 class EmployeesCreateView(LoginRequiredMixin, generic.CreateView):
@@ -11,6 +14,11 @@ class EmployeesCreateView(LoginRequiredMixin, generic.CreateView):
     fields= '__all__'
     template_name = 'employees/create.html'
     success_url = reverse_lazy('apps.employees:list')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['users'] = User.objects.all()
+        return context
     
     def form_valid(self, form):
         number_file = form.cleaned_data['number_file']
@@ -31,8 +39,12 @@ class EmployeesUpdateView(LoginRequiredMixin, generic.UpdateView):
         response = super().form_valid(form)
         messages.success(self.request, f"¡El empleado '{self.object.name}' fue actualizado correctamente!")
         return response
-    
-class EmployeesListView(LoginRequiredMixin, generic.ListView):
+
+class SuperuserRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_authenticated and self.request.user.is_superuser
+
+class EmployeesListView(SuperuserRequiredMixin, LoginRequiredMixin, generic.ListView):
     model= Employees
     template_name = 'employees/list.html'
     context_object_name = 'employees'

@@ -12,20 +12,19 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 class BookingsCreateView(LoginRequiredMixin, generic.CreateView):
-    model= Bookings
-    fields= '__all__'
+    model = Bookings
     template_name = 'bookings/create.html'
+    fields = ['date', 'customer', 'service', 'coordinators']
     context_object_name = 'bookings'
     success_url = reverse_lazy('apps.bookings:list')
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['customers'] = Customers.objects.all()
         context['services'] = Services.objects.all()
-        context['employees'] = Employees.objects.all()
         context['coordinators'] = Coordinators.objects.all()
         return context
-    
+
     def form_valid(self, form):
         date = form.cleaned_data['date']
         current_datetime = datetime.now(timezone.utc)
@@ -34,14 +33,19 @@ class BookingsCreateView(LoginRequiredMixin, generic.CreateView):
         if input_date < current_date:
             messages.error(self.request, "¡La fecha no puede ser menor a la actual!")
             return self.form_invalid(form)
+
+        employee = Employees.objects.get(user=self.request.user)
+
+        form.instance.employee = employee
+
         response = super().form_valid(form)
         messages.success(self.request, "¡La reserva fue creada correctamente!")
         return response
        
 class BookingsUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Bookings
-    fields= '__all__'
     template_name = 'bookings/update.html'
+    fields = ['date', 'customer', 'service', 'coordinators']
     context_object_name = 'bookings'
     success_url = reverse_lazy('apps.bookings:list')
     
@@ -50,11 +54,12 @@ class BookingsUpdateView(LoginRequiredMixin, generic.UpdateView):
         print(context)
         context['customers'] = Customers.objects.all()
         context['services'] = Services.objects.all()
-        context['employees'] = Employees.objects.all()
         context['coordinators'] = Coordinators.objects.all()
         return context
     
     def form_valid(self, form):
+        employee = Employees.objects.get(user=self.request.user)
+        form.instance.employee = employee
         response = super().form_valid(form)
         messages.success(self.request, f"¡La reserva fue actualizada correctamente!")
         return response 
