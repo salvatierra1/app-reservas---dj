@@ -4,8 +4,14 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+body,
+.container-block,
+.table td {
+    color: #17202a;
+}
+
 .container-block {
-    margin-top: 5rem !important;
+    margin-top: 2rem !important;
     color: aliceblue;
     background-color: #6e98bf;
 }
@@ -21,10 +27,22 @@ body {
 .nav {
     background-color: #2a3547;
 }
+.text{
+    color: aliceblue;
+}
+.text:hover{
+ color:#6e98bf;
 
-body,
-.container-block,
-.table td {
-    color: #17202a;
 }
 
+.container-card{
+    box-shadow: 10px 10px 30px -8px rgba(0,0,0,0.75)!important;
+}
+
+.container-card:hover{
+    background: linear-gradient(to right, #2a3547, #5373a2, #2a3547); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color:aliceblue;
+    box-shadow: 10px 10px 30px -8px rgba(124, 124, 124, 0.75);
+}
+
+/*login*/
