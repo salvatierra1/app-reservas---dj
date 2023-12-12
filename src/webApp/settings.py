@@ -51,6 +51,9 @@ INSTALLED_APPS = [
     #Apis
     "rest_framework",
     "apps.api_events",
+    
+    # Swagger
+    'drf_yasg',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

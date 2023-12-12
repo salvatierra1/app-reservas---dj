@@ -9,7 +9,12 @@ from django.contrib.auth.models import User
 
 
 # Create your views here.
-class EmployeesCreateView(LoginRequiredMixin, generic.CreateView):
+
+class SuperuserRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_authenticated and self.request.user.is_superuser
+    
+class EmployeesCreateView(SuperuserRequiredMixin, LoginRequiredMixin, generic.CreateView):
     model= Employees
     fields= '__all__'
     template_name = 'employees/create.html'
@@ -29,7 +34,7 @@ class EmployeesCreateView(LoginRequiredMixin, generic.CreateView):
         messages.success(self.request, f"¡El empleado '{self.object.name}' fue creado correctamente!")
         return response
 
-class EmployeesUpdateView(LoginRequiredMixin, generic.UpdateView):
+class EmployeesUpdateView(SuperuserRequiredMixin, LoginRequiredMixin, generic.UpdateView):
     model= Employees
     fields= '__all__'
     template_name = 'employees/update.html'
@@ -40,9 +45,6 @@ class EmployeesUpdateView(LoginRequiredMixin, generic.UpdateView):
         messages.success(self.request, f"¡El empleado '{self.object.name}' fue actualizado correctamente!")
         return response
 
-class SuperuserRequiredMixin(UserPassesTestMixin):
-    def test_func(self):
-        return self.request.user.is_authenticated and self.request.user.is_superuser
 
 class EmployeesListView(SuperuserRequiredMixin, LoginRequiredMixin, generic.ListView):
     model= Employees

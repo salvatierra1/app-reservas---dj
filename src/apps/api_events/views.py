@@ -2,10 +2,11 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from apps.coordinators.models import Coordinators
+from apps.customers.models import Customers
 from apps.services.models import Services
 from apps.employees.models import Employees
 from apps.bookings.models import Bookings
-from .serializers import CoordinatorsListSerializer, CoordinatorsDetailSerializer, EmployeesDetailSerializer, EmployeesListSerializer, ServicesDetailSerializer, ServicesListSerializer
+from .serializers import BookingsDetailSerializer, BookingsListSerializer, CoordinatorsListSerializer, CoordinatorsDetailSerializer, CustomersDetailSerializer, CustomersListSerializer, EmployeesDetailSerializer, EmployeesListSerializer, ServicesDetailSerializer, ServicesListSerializer
 
 # Create your views here.
 
@@ -49,10 +50,22 @@ class EmployeesRetrieveAPIView(generics.RetrieveAPIView):
 
 class BookingsListAPIView(generics.ListAPIView):
     queryset = Bookings.objects.all()
-    # serializer_class = BookingsListSerializer
+    serializer_class = BookingsListSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     
 class BookingsRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Bookings.objects.all()
-    # serializer_class = BookingsDetailSerializer
+    serializer_class = BookingsDetailSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]  
+    
+# Api Customers
+
+class CustomersListAPIView(generics.ListAPIView):
+    queryset = Customers.objects.all()
+    serializer_class = CustomersListSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    
+class CustomersRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = Customers.objects.all()
+    serializer_class = CustomersDetailSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]  

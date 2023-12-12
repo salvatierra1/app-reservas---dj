@@ -3,6 +3,7 @@ from apps.coordinators.models import Coordinators
 from apps.employees.models import Employees
 from apps.services.models import Services
 from apps.customers.models import Customers
+from apps.bookings.models import Bookings
 
 class CoordinatorsListSerializer(serializers.ModelSerializer):
     class Meta:
@@ -42,4 +43,14 @@ class CustomersListSerializer(serializers.ModelSerializer):
 class CustomersDetailSerializer(serializers.ModelSerializer):       
     class Meta:
         model = Customers
+        fields = '__all__'
+        
+class BookingsListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bookings
+        fields = ['id', 'booking_date']
+    
+class BookingsDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bookings
         fields = '__all__'
