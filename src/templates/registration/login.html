@@ -13,12 +13,15 @@
 <body>
 
 {% block content %}
+
+
 <div class='container-login'>
-    <div>
-        <img  class='container-logo'src='../../media/log.svg' alt="" />
+<div class='row '>
+    <div class='col-12 col-md-6'>
+        <img  class='container-logo'  src='../../media/log.svg' alt="" />
      </div>
    
-    <div class='container  col-4 p-4 rounded container-form'>
+    <div class='container col-8  col-md-6 p-4 rounded container-form'>
     
         <form method="POST" action="{% url 'login' %} " enctype="multipart/form-data" >
             {% csrf_token %}
@@ -40,6 +43,7 @@
                 <button type="submit" class='form-control btn btn-outline-light mt-4' >Ingresar</button>
         </form>
     </div>
+</div>
 </div>
 {% endblock %}
 
