@@ -1,18 +1,48 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Eventos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">  
+  <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+</head>
+<body>
+
 {% block content %}
-
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
-
-<input type="submit" value="login">
-</form>
+<div class='container-login'>
+    <div>
+        <img  class='container-logo'src='../../media/log.svg' alt="" />
+     </div>
+   
+    <div class='container  col-4 p-4 rounded container-form'>
+    
+        <form method="POST" action="{% url 'login' %} " enctype="multipart/form-data" >
+            {% csrf_token %}
+                <div class="row">
+                    <div class="container col-md-12">
+                        <h2>Sistema de reservas</h2>
+                        <div class="form-group mb-3 mt-4">
+                            <label>Usuario</label>
+                        <div id="date_input">
+                            <input type="text" name="user.name" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Contraseña</label>
+                    <div id="date_input" >
+                        <input type="password" name="password" class="form-control"/>
+                    </div>
+                </div>
+                <button type="submit" class='form-control btn btn-outline-secondary mt-4' >Ingresar</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
+
+<script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

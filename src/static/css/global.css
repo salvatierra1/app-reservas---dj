@@ -46,3 +46,25 @@ body,
 }
 
 /*login*/
+
+
+.container-login{
+    width: 100vw;
+    height: 100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(0deg, #2a3547 50%, #6e98bf 50%);
+    
+    
+}
+.container-logo{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.container-form{
+  background-color: #17202a7e;
+  color: #f4f8fa;
+}
