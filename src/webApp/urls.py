@@ -9,6 +9,9 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+from apps.home.views import CustomLoginView, CustomLogoutView
+
+
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -24,8 +27,8 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', auth_views.LoginView.as_view(), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('', CustomLoginView.as_view(), name='login'),
+    path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('home/', include('apps.home.urls', namespace='home')),
     path('bookings/', include('apps.bookings.urls', namespace='bookings')),
     path('coordinators/', include('apps.coordinators.urls', namespace='coordinators')),
