@@ -44,7 +44,7 @@ class IndexView(LoginRequiredMixin, TemplateView):
 class CustomLoginView(LoginView):
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, f"¡Bienvenido de nuevo {self.request.user.employees} ! Has iniciado sesión con éxito.")
+        messages.success(self.request, f"¡Bienvenido de nuevo {self.request.user}! Has iniciado sesión con éxito.")
         return response
 
 class CustomLogoutView(LogoutView):
