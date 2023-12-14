@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Employees
 # Register your models here.
-#admin.site.register(Beneficiario)
+
 
 #metodo para filtrado de informacion en el panel de administrador
 @admin.register(Employees)
