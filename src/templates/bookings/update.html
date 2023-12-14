@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="form-group mb-3">
-                    <label>Service:</label>
+                    <label>Servicio:</label>
                     <select name="service" class="form-control">
                         {% for service in services %}
                             <option value="{{ service.id }}" {% if service.id == bookings.service.id %}selected{% endif %}>
