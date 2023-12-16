@@ -9,4 +9,5 @@ urlpatterns = [
      path('list/', views.ServicesListView.as_view(), name ='list'),
      path('activate/<int:pk>/', views.ServicesActivateView.as_view(), name='activate'),
      path('disabled/<int:pk>/', views.ServicesDisabledView.as_view(), name='disabled'),
+     path('filter/', views.ServicesListFilterView.as_view(), name ='filter'),
 ]

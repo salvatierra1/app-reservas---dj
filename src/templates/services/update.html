@@ -19,13 +19,13 @@
                 <div class="form-group mb-3">
                     <label>Descripción:</label>
                     <div id="description_input">
-                        <input type="text" name="description" class="form-control" value="{{ services.description }}">
+                        <textarea id="description" name="description" class="form-control" rows="4" cols="50">{{ services.description }}</textarea>
                     </div>
                 </div>
                 <div class="form-group mb-3">
                     <label>Precio:</label>
                     <div id="price_input">
-                        <input type="text" name="price" class="form-control" value="{{ services.price }}">
+                        <input type="text" id="id_price" name="price" class="form-control" value="{{ services.price }}">
                     </div>
                 </div>
                 <div class="form-group mb-3">

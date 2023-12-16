@@ -1,14 +1,32 @@
 {% extends "home/base.html" %}
 {% block content %}
 {% include 'include/messages.html' %}
-<div class='container'>
+<div class="d-flex justify-content-between align-items-center">
     <h2>Listado de Coordinadores</h2>
+    <div class="add-button">
+        <a href="{% url 'apps.coordinators:new' %}" class="button">
+            <span class="button__text">Agregar</span>
+            <span class="button__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                    <line y2="19" y1="5" x2="12" x1="12"></line>
+                    <line y2="12" y1="12" x2="19" x1="5"></line>
+                </svg>
+            </span>
+        </a>
+    </div>
 </div>
-<hr/> 
-<div class="add-button">
-      <a href="{% url 'apps.coordinators:new' %}" class="btn btn-primary btn-sm" >
-      <i class="fas fa-plus-circle"></i> Agregar
-      </a> 
+<hr/>
+<div class="search-form mt-3">
+    <form method="GET" action="{% url 'apps.coordinators:filter' %}">
+        <div class="input-group">
+            <input type="text" class="form-control" name="search" placeholder="Buscar por apellido/nombre">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
 </div>
 <table class="table table-hover table-bordered mt-4 text-center">
         <thead>
@@ -46,8 +64,13 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a href="{% url 'apps.coordinators:update' pk=coordinator.pk %}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-edit"></i></a>
+                        <a href="{% url 'apps.coordinators:update' pk=coordinator.pk %}">
+                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/ifsxxxte.json"
+                                trigger="hover"
+                                style="width:25px;height:25px">
+                            </lord-icon>
                     </td>
                 </tr>
             {% endfor %}

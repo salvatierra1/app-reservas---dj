@@ -4,6 +4,8 @@ from .models import Customers
 from django.views import View, generic
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
+
 
 # Create your views here.
 class CustomersCreateView(LoginRequiredMixin, generic.CreateView):
@@ -53,3 +55,19 @@ class CustomersDisabledView(LoginRequiredMixin, View):
         messages.success(self.request, f"¡El cliente fue desactivado correctamente!")
         return redirect(self.success_url)
     
+class CustomersListFilterView(LoginRequiredMixin, generic.ListView):
+    model = Customers
+    template_name = 'customers/list.html'
+    context_object_name = 'customers'
+
+    def get_queryset(self):
+        queryset = Customers.objects.all()
+        search = self.request.GET.get('search')
+
+        if search:
+            queryset = Customers.objects.filter(
+                Q(name__icontains=search) |
+                Q(last_name__iexact=search)
+            ).distinct()
+
+        return queryset

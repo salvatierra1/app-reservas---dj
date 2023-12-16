@@ -10,4 +10,5 @@ urlpatterns = [
      path('list/', views.CustomersListView.as_view(), name ='list'),
      path('activate/<int:pk>/', views.CustomersActivateView.as_view(), name='activate'),
      path('disabled/<int:pk>/', views.CustomersDisabledView.as_view(), name='disabled'),
+     path('filter/', views.CustomersListFilterView.as_view(), name ='filter'),
 ]

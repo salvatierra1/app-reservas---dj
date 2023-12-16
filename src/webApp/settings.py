@@ -10,8 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
+import os
+from dotenv import load_dotenv
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -54,6 +58,7 @@ INSTALLED_APPS = [
     
     # Swagger
     'drf_yasg',
+    'sendgrid',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -146,7 +151,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-ar'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
+
 
 USE_I18N = True
 
@@ -195,7 +201,16 @@ REST_FRAMEWORK = {
     ]
 }
 
+# Login
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/home/'
 LOGOUT_URL = 'logout/'
 LOGOUT_REDIRECT_URL = '/'
+
+
+# Configuración de SendGrid
+load_dotenv()
+SENDGRID_API_KEY = config("SENDGRID_API_KEY")
+EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+SENDGRID_ECHO_TO_STDOUT = True
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False

@@ -4,6 +4,8 @@ from django.views import View, generic
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
+
 
 # Create your views here.
 class CoordinatorsCreateView(LoginRequiredMixin, generic.CreateView):
@@ -56,3 +58,20 @@ class CoordinatorsDisabledView(LoginRequiredMixin, View):
         coordinator.save()
         messages.success(self.request, f"¡El coordinador fue desactivado correctamente!")
         return redirect(self.success_url)
+
+class CoordinatorsListFilterView(LoginRequiredMixin, generic.ListView):
+    model = Coordinators
+    template_name = 'coordinators/list.html'
+    context_object_name = 'coordinators'
+
+    def get_queryset(self):
+        queryset = Coordinators.objects.all()
+        search = self.request.GET.get('search')
+
+        if search:
+            queryset = Coordinators.objects.filter(
+                Q(name__icontains=search) |
+                Q(last_name__iexact=search)
+            ).distinct()
+
+        return queryset

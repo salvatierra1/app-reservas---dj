@@ -9,4 +9,5 @@ urlpatterns = [
      path('list/', views.CoordinatorsListView.as_view(), name ='list'),
      path('activate/<int:pk>/', views.CoordinatorsActivateView.as_view(), name='activate'),
      path('disabled/<int:pk>/', views.CoordinatorsDisabledView.as_view(), name='disabled'),
+     path('filter/', views.CoordinatorsListFilterView.as_view(), name ='filter'),
 ]

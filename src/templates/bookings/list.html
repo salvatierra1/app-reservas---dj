@@ -1,15 +1,33 @@
 {% extends "home/base.html" %}
 {% block content %}
 {% include 'include/messages.html' %}
-<div class='container'>
-    <h2>Listado de Reservas</h2>
+<div class="d-flex justify-content-between align-items-center">
+        <h2>Listado de Reservas</h2>
+        <div class="add-button">
+            <a href="{% url 'apps.bookings:new' %}" class="button">
+                <span class="button__text">Agregar</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </a>
+        </div>
 </div>
-<hr/>
-<div class="add-button">
-    <a href="{% url 'apps.bookings:new' %}" class="btn btn-primary btn-sm" >
-    <i class="fas fa-plus-circle"></i> Agregar
-    </a> 
-</div>  
+    <hr/>
+    <div class="search-form mt-3">
+        <form method="GET" action="{% url 'apps.bookings:filter' %}">
+            <div class="input-group">
+                <input type="text" class="form-control" name="search" placeholder="Buscar por apellido/nombre de cliente">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 <table class="table custom-table table-hover table-bordered mt-4 text-center">
     <thead>
             <tr class="custom-row table-dark">
@@ -19,6 +37,7 @@
                 <th scope="col">Servicio</th>
                 <th scope="col">Coordinador</th>
                 <th scope="col">Empleado</th>
+                <th scope="col">Código QR</th>
                 <th scope="col">Opciones</th>
             </tr>
         </thead>
@@ -31,12 +50,27 @@
                     <td>{{ booking.service }}</td>
                     <td>{{ booking.coordinators }}</td>
                     <td>{{ booking.employee }}</td>
+                    <td class="qr-code-cell zoom-effect">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <img src="{% url 'apps.bookings:qr_code' pk=booking.pk %}" alt="Código QR" class="img-fluid" style="max-width: 100px;">
+                        </div>
+                    </td>                    
                     <td>
-                        <a href="{% url 'apps.bookings:update' pk=booking.pk %}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-edit"></i>
+                        <a href="{% url 'apps.bookings:update' pk=booking.pk %}">
+                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/ifsxxxte.json"
+                                trigger="hover"
+                                style="width:25px;height:25px">
+                            </lord-icon>
                         </a>
-                        <a href="{% url 'apps.bookings:delete' pk=booking.pk %}" class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash"></i>
+                        <a href="{% url 'apps.bookings:delete' pk=booking.pk %}">
+                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/skkahier.json"
+                                trigger="hover"
+                                style="width:25px;height:25px">
+                            </lord-icon>
                         </a>
                     </td>
                 </tr>

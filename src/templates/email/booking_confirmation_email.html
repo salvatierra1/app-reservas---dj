@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Confirmación de Reserva!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #2ecc71;
+        }
+
+        p {
+            color: #333;
+        }
+
+        .emoji {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Confirmación de Reserva</h1>
+        <p>¡Gracias por realizar la reserva! Aquí tienes los detalles:</p>
+        <ul>
+            <li><span class="emoji">📅</span> <strong>Fecha de reserva:</strong> {{ booking.date }}</li>
+            <li><span class="emoji">🛎️</span> <strong>Servicio:</strong> {{ booking.service }}</li>
+            <li><span class="emoji">👥</span> <strong>Coordinador:</strong> {{ booking.coordinators }}</li>
+            <li><span class="emoji">👤</span> <strong>Empleado:</strong> {{ booking.employee }}</li>
+        </ul>
+        <p>¡Esperamos verte pronto!</p>
+    </div>
+</body>
+</html>

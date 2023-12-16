@@ -7,9 +7,15 @@
 </div>
 <hr/>
 <div class="add-button">
-    <a href="{% url 'apps.employees:new' %}" class="btn btn-primary btn-sm" >
-    <i class="fas fa-plus-circle"></i> Agregar
-    </a> 
+    <a href="{% url 'apps.employees:new' %}" class="button">
+        <span class="button__text">Agregar</span>
+        <span class="button__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                <line y2="19" y1="5" x2="12" x1="12"></line>
+                <line y2="12" y1="12" x2="19" x1="5"></line>
+            </svg>
+        </span>
+    </a>
 </div>
 <table class="table table-hover table-bordered mt-4 text-center">
         <thead>
@@ -37,8 +43,13 @@
                         {% endif %}
                     </td>                                       
                     <td>
-                        <a href="{% url 'apps.employees:update' pk=employee.pk %}" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-edit"></i>
+                        <a href="{% url 'apps.employees:update' pk=employee.pk %}">
+                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/ifsxxxte.json"
+                                trigger="hover"
+                                style="width:25px;height:25px">
+                            </lord-icon>
                         </a>
                     </td>
                 </tr>

@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Eventos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">  
+  <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+</head>
+<body>
+  <div class='container  rounded p-4 container-block shadow-lg '>
+  <h2>Detalles de la reserva</h2>
+    <div class="card">
+        <div class="card-body card-list">
+            <h2 class="card-title">{{ booking.customer }}</h2>
+            <hr>
+            <ul class="list-unstyled list">
+              <li><i class="fas fa-book"></i> {{ booking.service }}</li>
+              <li><i class="far fa-envelope"></i> {{ booking.coordinators }}</li>
+              <li><i class="fas fa-user-tie"></i> {{ booking.employee }}</li>
+              <li><i class="far fa-calendar-alt"></i> {{ booking.date }}</li>
+              <br>
+            </ul>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
