@@ -16,8 +16,6 @@ from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
 
-
-
 # Create your views here.
 
 class BookingsCreateView(LoginRequiredMixin, generic.CreateView):
@@ -43,30 +41,21 @@ class BookingsCreateView(LoginRequiredMixin, generic.CreateView):
         if input_date < current_date:
             messages.error(self.request, "¡La fecha no puede ser menor a la actual!")
             return self.form_invalid(form)
-
         employee = Employees.objects.get(user=self.request.user)
         form.instance.employee = employee
-
         response = super().form_valid(form)
         messages.success(self.request, "¡La reserva fue creada correctamente!")
-
         customer_email = form.instance.customer.email
         self.send_booking_confirmation_email(customer_email)
-        print(response.status_code)
-        print(response.headers)
-
         return response
     
     def send_booking_confirmation_email(self, customer_email):   
-        booking = self.object  # Obtener la instancia de la reserva creada
-
+        booking = self.object
         subject = '¡Confirmación de Reserva! 🎉'
         message = 'Gracias por realizar la reserva. Detalles de la reserva:\n\n'
-        
         message += f'Fecha de reserva: {booking.date}\n'
         message += f'Servicio: {booking.service}\n'
         message += f'Coordinador: {booking.coordinators}\n'
-
         html_message = render_to_string('email/booking_confirmation_email.html', {'booking': booking})
 
         send_mail(
@@ -78,10 +67,6 @@ class BookingsCreateView(LoginRequiredMixin, generic.CreateView):
             html_message=html_message,
         )
        
-
-
-   
-   
 class BookingsUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Bookings
     template_name = 'bookings/update.html'
@@ -109,7 +94,27 @@ class BookingsUpdateView(LoginRequiredMixin, generic.UpdateView):
         form.instance.employee = employee
         response = super().form_valid(form)
         messages.success(self.request, f"¡La reserva fue actualizada correctamente!")
-        return response 
+        customer_email = form.instance.customer.email
+        self.send_booking_confirmation_email(customer_email)
+        return response
+    
+    def send_booking_confirmation_email(self, customer_email):   
+        booking = self.object
+        subject = '¡Actualización de Reserva! 🎉'
+        message = 'Gracias por realizar la reserva. Detalles de la reserva:\n\n'
+        message += f'Fecha de reserva: {booking.date}\n'
+        message += f'Servicio: {booking.service}\n'
+        message += f'Coordinador: {booking.coordinators}\n'
+        html_message = render_to_string('email/booking_confirmation_email.html', {'booking': booking})
+
+        send_mail(
+            subject,
+            message,
+            'victorsalvatierra230@gmail.com',
+            [customer_email],
+            fail_silently=False,
+            html_message=html_message,
+        )
 
 class BookingsDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Bookings
