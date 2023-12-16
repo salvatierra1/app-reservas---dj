@@ -58,7 +58,10 @@ INSTALLED_APPS = [
     
     # Swagger
     'drf_yasg',
-    'sendgrid',
+   
+    
+    #SendGrid
+     'sendgrid',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
